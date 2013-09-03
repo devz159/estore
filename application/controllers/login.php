@@ -9,12 +9,12 @@ class Login extends CI_Controller {
 
 	public function index() {
 
-		$this->_login();
+		$this->login();
 	}
 	
-	public function _login($param = ''){
+	public function login($param = ''){
 		$data['error'] = $param;
-		$data['main_content'] = "login/main_view";
+		$data['main_content'] = "login/login_view";
 		$this -> load -> view('includes/template', $data);
 	}
 
@@ -25,7 +25,7 @@ class Login extends CI_Controller {
 		$this->form_validation->set_rules('password', 'Password', 'required');    //set rules for password
 	
 		if($this->form_validation->run() == FALSE){     //if form in fields are incomplete, returns you to login_view
-			$this->_login('Please complete the form');
+			$this->login('Please complete the form');
 		} else {
 			
 			
@@ -35,7 +35,7 @@ class Login extends CI_Controller {
 				echo "success";
 				
 			}else{
-				$this->_login('username and password does not match');
+				$this->login('username and password does not match');
 			}
 		}
 	}
@@ -54,5 +54,15 @@ class Login extends CI_Controller {
 	}
 
 
+	public function registration(){
+		
+		$this->input->post('username');
+		$this->input->post('password');
+		$this->input->post('firstname');
+		$this->input->post('middlename');
+		$this->input->post('lastname');
+		
+	
+	}
 
 }

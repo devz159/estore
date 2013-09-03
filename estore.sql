@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `order` (
   `order_ID` int(11) NOT NULL AUTO_INCREMENT,
   `user_ID` int(11) NOT NULL,
   `total` int(11) NOT NULL,
-  `transaction_date` varchar(20) NOT NULL,
+  `transaction_date` DATE DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`order_ID`),
   KEY `fgn_user_ID` (`user_ID`)
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `order_details` (
 
 CREATE TABLE IF NOT EXISTS `payment` (
   `payment_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `payment_date` varchar(20) NOT NULL,
+  `payment_date` DATE DEFAULT NULL,
   `order_ID` int(11) NOT NULL,
   `payment_ref_number` varchar(20) NOT NULL,
   `status` int(11) DEFAULT NULL,
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `product` (
 
 CREATE TABLE IF NOT EXISTS `return` (
   `return_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `return_date` varchar(20) NOT NULL,
+  `return_date` DATE DEFAULT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`return_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `return_details` (
 
 CREATE TABLE IF NOT EXISTS `stock_receiving` (
   `stock_receiving_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `received_date` varchar(20) NOT NULL,
+  `received_date` DATE DEFAULT NULL,
   `user_ID` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`stock_receiving_ID`),
@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `middlename` varchar(20) NOT NULL,
   `lastname` varchar(20) NOT NULL,
   `contact_number` varchar(20) NOT NULL,
-  `birthdate` varchar(20) NOT NULL,
+  `birthdate` date DEFAULT NULL,
   `user_level` int(11) NOT NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`user_ID`)
