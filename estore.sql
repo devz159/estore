@@ -163,6 +163,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_ID` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `password` varchar(50) NOT NULL,
+  `email` varchar(20) NOT NULL,
   `firstname` varchar(20) NOT NULL,
   `middlename` varchar(20) NOT NULL,
   `lastname` varchar(20) NOT NULL,

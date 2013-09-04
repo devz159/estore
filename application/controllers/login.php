@@ -41,8 +41,8 @@ class Login extends CI_Controller {
 	}
 	
 	private function _isUserExist(){
-		$strqry  = "SELECT username, password FROM user WHERE username='{$this->input->post('username')}' AND password=md5( '{$this->input->post('password')}' )";
-		// echo $strqry; die();
+		$strqry  = " SELECT username, password FROM user WHERE username='{$this->input->post('username')}' AND password=md5( '{$this->input->post('password')}' )";
+	//	echo $strqry; die();
 		$params['querystring'] = $strqry;
 		$this->load->model("mdldata");
 		$this->mdldata->select($params);
@@ -53,16 +53,55 @@ class Login extends CI_Controller {
 			return true;
 	}
 
-
-	public function registration(){
-		
-		$this->input->post('username');
-		$this->input->post('password');
-		$this->input->post('firstname');
-		$this->input->post('middlename');
-		$this->input->post('lastname');
-		
+ 
 	
+	public function registration($param = ''){
+	
+		$data['error'] = $param;
+		$data['main_content'] = "login/registration_view";
+		$this -> load -> view('includes/template', $data);
 	}
+		
+	public function validateregistration(){
+			
+		$this->load->library('form_validation');
+		
+		$this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+		$this->form_validation->set_rules('email', 'E-mail Address', 'required');
+		$this->form_validation->set_rules('firstname', 'Firstname','required');
+		$this->form_validation->set_rules('middlename', 'Middlename','required');
+		$this->form_validation->set_rules('lastname', 'Lastname','required');
+		$this->form_validation->set_rules('contact_number', 'Contact Number','required');
+		$this->form_validation->set_rules('birthdate', 'Birthdate');
 
+	if($this->form_validation->run() == FALSE){     //if form in fields are incomplete, returns you to login_view
+			$this->registration('Please complete the form');
+		}
+	else{ 
+			$params = array(
+							'table' => array('name' => 'user'),
+							'fields' => array(
+												'username' => $this->input->post('username'),
+												'password' => md5($this->input->post('validation_password')),
+												'email' => $this->input->post('email'),
+												'firstname' => $this->input->post('firstname'),
+												'middlename' => $this->input->post('middlename'),
+												'lastname' => $this->input->post('lastname'),
+												'contact_number' => $this->input->post('contact_number'),
+												'birthdate' => $this->input->post('birthdate'),
+												'user_level' => $this->input->post('0'), //admin-1 user-0
+												'status' => $this->input->post('1') //active-1 inactive-0
+												) 
+							);
+						
+					//	$this->mdldata->SQLText(TRUE);	
+				//		 $query = $this->mdldata->buildQueryString();
+						
+						$this->mdldata->insert($params);
+						$data['main_content'] = 'login/dashboard_view';
+						$this->load->view('includes/template', $data);					
+		}
+					
+	}
 }
