@@ -90,6 +90,7 @@ CREATE TABLE IF NOT EXISTS `payment_confirmation` (
 
 CREATE TABLE IF NOT EXISTS `product` (
   `product_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `product_name` varchar(20) NOT NULL,
   `quantity` int(11) NOT NULL,
   `selling_price` int(11) NOT NULL,
   `discounted_price` int(11) NOT NULL,

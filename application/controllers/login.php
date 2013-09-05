@@ -30,8 +30,7 @@ class Login extends CI_Controller {
 			
 			
 			if($this->_isUserExist()){	//checks user exist in the database
-				//go to dashboard
-				//redirect
+ 				//redirect
 				echo "success";
 				
 			}else{
@@ -65,6 +64,7 @@ class Login extends CI_Controller {
 	public function validateregistration(){
 			
 		$this->load->library('form_validation');
+		$this->load->model('mdldata');
 		
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');

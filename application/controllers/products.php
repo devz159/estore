@@ -16,16 +16,23 @@ public function __construct() {
 	}
 
 	
-	public function login() {
+	public function add() {
 	
-	 
 	
 	}
 	
+	public function delete(){
+		
+	}
 	
 	
+	public function edit(){
+		
+	}
 	
-
+	public function read(){
+		
+	}
 
 
 
