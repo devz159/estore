@@ -67,8 +67,8 @@ class Login extends CI_Controller {
 		$this->load->model('mdldata');
 		
 		$this->form_validation->set_rules('username', 'Username', 'required');
-		$this->form_validation->set_rules('password', 'Password', 'required');
-		$this->form_validation->set_rules('email', 'E-mail Address', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[16]') ;
+		$this->form_validation->set_rules('email', 'E-mail Address', 'required|valid_email');
 		$this->form_validation->set_rules('firstname', 'Firstname','required');
 		$this->form_validation->set_rules('middlename', 'Middlename','required');
 		$this->form_validation->set_rules('lastname', 'Lastname','required');
@@ -83,15 +83,15 @@ class Login extends CI_Controller {
 							'table' => array('name' => 'user'),
 							'fields' => array(
 												'username' => $this->input->post('username'),
-												'password' => md5($this->input->post('validation_password')),
+												'password' => md5($this->input->post('password')),
 												'email' => $this->input->post('email'),
 												'firstname' => $this->input->post('firstname'),
 												'middlename' => $this->input->post('middlename'),
 												'lastname' => $this->input->post('lastname'),
 												'contact_number' => $this->input->post('contact_number'),
 												'birthdate' => $this->input->post('birthdate'),
-												'user_level' => $this->input->post('0'), //admin-1 user-0
-												'status' => $this->input->post('1') //active-1 inactive-0
+												'user_level' => 0, //admin-1 user-0
+												'status' => 1 //active-1 inactive-0
 												) 
 							);
 						
