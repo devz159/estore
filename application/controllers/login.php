@@ -9,19 +9,35 @@ class Login extends CI_Controller {
 	// getInfo();
  			$params = array('user_islog');
  			$this->sessionbrowser->getInfo($params); // returns TRUE if successful, otherwise FALSE
-		
+
+ 
 }
 	
 	
 	public function index() {
 
+		/**		if ($params['user_user_level'] == 1) {
+					
+				redirect(base_url('admin/dashboard'));
+			}
+			elseif ($params ['user_user_level'] == 0) {
+				
+				redirect(base_url('user/dashboard'));	
+			} 
+		*/	
+		
 		$this->login();
+		
+			
+			
 	}
 	
 	public function login($param = ''){
 		$data['error'] = $param;
 		$data['main_content'] = "login/login_view";
 		$this->load->view('includes/template', $data);
+		
+	
 	}
 
 	public function validatelogin() {
@@ -47,19 +63,7 @@ class Login extends CI_Controller {
  							'user_user_level' => $this->getuserlevel($this->input->post('username')) //1-admin, 0-user 
 						);
 						
- 					
- 				//else
- 				/**
- 					$params = array(
- 							'admin_username' => $this->input->post('username'),
- 							'admin_islog' => TRUE,
- 							'admin_fullname' => $this->getfullname($this->input->post('username')),
- 							'admin_user_level' => $this->getuserlevel($this->input->post('username')) //1-admin, 0-user 
- 							
-						);
- 				
-				 * 
-				 */
+ 		
 				 $this->sessionbrowser->setInfo($params); // returns TRUE if successful, otherwise FALSE
  				
 		//	call_debug($params);	
@@ -102,7 +106,6 @@ class Login extends CI_Controller {
 		$this -> load -> view('includes/template', $data);
 	}
 
-		
 		
 		
 	public function validateregister(){
