@@ -6,6 +6,7 @@
      <p><label>Quantity</label> <input type="number" name= "quanity" /></p>
      <p><label>Selling Price</label> <input type = "number" name="selling_price" /></p>
      <p><label>Discount Price</label> <input type = "number" name="discounted_price" /></p>
+    
      <p><label>Color</label>
      	<select name = "color">	
 				<option value="0"> White</option>

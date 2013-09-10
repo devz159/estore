@@ -1,0 +1,4 @@
+user_username:USER_USERNAME
+user_islog:USER_ISLOG
+user_fullname:USER_FULLNAME
+user_user_level:USER_USER_LEVEL

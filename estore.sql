@@ -169,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `middlename` varchar(20)  NULL,
   `lastname` varchar(20)  NULL,
   `contact_number` varchar(20)  NULL,
-  `birthdate` date DEFAULT NULL,
+  `birthdate` date NOT NULL, 
   `user_level` int(11)  NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`user_ID`)

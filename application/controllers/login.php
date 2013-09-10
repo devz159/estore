@@ -4,9 +4,15 @@ class Login extends CI_Controller {
 
 
 	public function __construct() {
-		parent::__construct();
-	}
-
+	parent::__construct();
+		
+	// getInfo();
+ 			$params = array('user_islog');
+ 			$this->sessionbrowser->getInfo($params); // returns TRUE if successful, otherwise FALSE
+		
+}
+	
+	
 	public function index() {
 
 		$this->login();
@@ -15,7 +21,7 @@ class Login extends CI_Controller {
 	public function login($param = ''){
 		$data['error'] = $param;
 		$data['main_content'] = "login/login_view";
-		$this -> load -> view('includes/template', $data);
+		$this->load->view('includes/template', $data);
 	}
 
 	public function validatelogin() {
@@ -31,37 +37,75 @@ class Login extends CI_Controller {
 			
 			if($this->_isUserExist()){	//checks user exist in the database
  				//redirect
-				echo "success";
 				
-			}else{
-				$this->login('username and password does not match');
+				
+				//if userlvl = 0
+					$params = array(
+ 							'user_username' => $this->input->post('username'),
+ 							'user_islog' => TRUE,
+ 							'user_fullname' => $this->getfullname($this->input->post('username')),
+ 							'user_user_level' => $this->getuserlevel($this->input->post('username')) //1-admin, 0-user 
+						);
+						
+ 					
+ 				//else
+ 				/**
+ 					$params = array(
+ 							'admin_username' => $this->input->post('username'),
+ 							'admin_islog' => TRUE,
+ 							'admin_fullname' => $this->getfullname($this->input->post('username')),
+ 							'admin_user_level' => $this->getuserlevel($this->input->post('username')) //1-admin, 0-user 
+ 							
+						);
+ 				
+				 * 
+				 */
+				 $this->sessionbrowser->setInfo($params); // returns TRUE if successful, otherwise FALSE
+ 				
+		//	call_debug($params);	
+			
+								
+			if ($params['user_user_level'] == 1) {
+					
+				redirect(base_url('admin/dashboard'));
 			}
+			else {
+					
+				redirect(base_url('user/dashboard'));	
+			
+			}
+			
+		}else{
+		$this->login('username and password does not match');
 		}
 	}
+}
 	
-	private function _isUserExist(){
-		$strqry  = " SELECT username, password FROM user WHERE username='{$this->input->post('username')}' AND password=md5( '{$this->input->post('password')}' )";
-	//	echo $strqry; die();
-		$params['querystring'] = $strqry;
-		$this->load->model("mdldata");
-		$this->mdldata->select($params);
-		
-		if($this->mdldata->_mRowCount<1)
-			return false;
-		else
-			return true;
+	
+ 	public function logout(){
+ 		
+			$params = array('user_username', 'user_islog', 'user_fullname','user_user_level');
+		 	$this->sessionbrowser->destroy($params); // returns TRUE if successful, otherwise FALSE
+		 	
+ 			// DATA:
+ 			$arr = $this->sessionbrowser->mData;
+			
+			redirect(base_url());						 
 	}
 
- 
+
 	
-	public function registration($param = ''){
+	public function register($param = ''){
 	
 		$data['error'] = $param;
-		$data['main_content'] = "login/registration_view";
+		$data['main_content'] = "login/register_view";
 		$this -> load -> view('includes/template', $data);
 	}
+
 		
-	public function validateregistration(){
+		
+		
+	public function validateregister(){
 			
 		$this->load->library('form_validation');
 		$this->load->model('mdldata');
@@ -73,11 +117,11 @@ class Login extends CI_Controller {
 		$this->form_validation->set_rules('middlename', 'Middlename','required');
 		$this->form_validation->set_rules('lastname', 'Lastname','required');
 		$this->form_validation->set_rules('contact_number', 'Contact Number','required');
-		$this->form_validation->set_rules('birthdate', 'Birthdate');
 
 	if($this->form_validation->run() == FALSE){     //if form in fields are incomplete, returns you to login_view
-			$this->registration('Please complete the form');
+			$this->register('Please complete the form');
 		}
+	
 	else{ 
 			$params = array(
 							'table' => array('name' => 'user'),
@@ -89,7 +133,6 @@ class Login extends CI_Controller {
 												'middlename' => $this->input->post('middlename'),
 												'lastname' => $this->input->post('lastname'),
 												'contact_number' => $this->input->post('contact_number'),
-												'birthdate' => $this->input->post('birthdate'),
 												'user_level' => 0, //admin-1 user-0
 												'status' => 1 //active-1 inactive-0
 												) 
@@ -97,11 +140,61 @@ class Login extends CI_Controller {
 						
 					//	$this->mdldata->SQLText(TRUE);	
 				//		 $query = $this->mdldata->buildQueryString();
-						
+				//		call_debug($params);
 						$this->mdldata->insert($params);
-						$data['main_content'] = 'login/dashboard_view';
-						$this->load->view('includes/template', $data);					
-		}
-					
+						
+						
+						$params = array(
+ 							'user_username' => $this->input->post('username'),
+ 							'user_islog' => TRUE,
+ 							'user_fullname' => $this->getfullname($this->input->post('username')), 
+ 						);
+ 				
+ 						$this->sessionbrowser->setInfo($params); // returns TRUE if successful, otherwise FALSE
+		//	call_debug($params);	
+					redirect(base_url('user/dashboard'));
+					}
 	}
+
+//==========================================PRIVATE VARIABLES============================================================//
+//private variables
+
+	private function getuserlevel($username) {
+		
+	$params["querystring"] = "SELECT user_level FROM `user` WHERE username = '".$username."'";
+	$this->mdldata->select($params);
+	$records = $this->mdldata->_mRecords;
+	foreach ($records as $rec){
+		
+		return $rec->user_level;
+			}
+	}
+
+	private function getfullname($username) {
+		
+		$strQry = "SELECT CONCAT( firstname,  ' ', middlename,  ' ', lastname ) AS fullname FROM `user` WHERE username = '".$username. "'";
+		
+		$records = $this->db->query($strQry)->result();
+		
+		foreach($records as $rec) {
+			return $rec->fullname;
+		}
+		
+		return "no user";
+		
+	}
+	
+	private function _isUserExist(){
+		$strqry  = " SELECT username, password FROM user WHERE username='{$this->input->post('username')}' AND password=md5( '{$this->input->post('password')}' )";
+	//	echo $strqry; die();
+		$params['querystring'] = $strqry;
+		$this->load->model('mdldata');
+		$this->mdldata->select($params);
+		
+		if($this->mdldata->_mRowCount<1)
+			return false;
+		else
+			return true;
+		}
+	
 }

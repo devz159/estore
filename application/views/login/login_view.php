@@ -6,6 +6,6 @@
      <p><label>Password</label><input type="password" name="password" /></p>
 	<p><input type="submit" value="submit" /></p>
 	
-	<a href="login/registration">Register</a>
+	<a href="login/register">Register</a>
 
 </div>
