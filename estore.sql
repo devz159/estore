@@ -90,6 +90,7 @@ CREATE TABLE IF NOT EXISTS `payment_confirmation` (
 
 CREATE TABLE IF NOT EXISTS `product` (
   `product_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `product_name` varchar(20) NOT NULL,
   `quantity` int(11) NOT NULL,
   `selling_price` int(11) NOT NULL,
   `discounted_price` int(11) NOT NULL,
@@ -161,15 +162,15 @@ CREATE TABLE IF NOT EXISTS `stock_receiving_details` (
 
 CREATE TABLE IF NOT EXISTS `user` (
   `user_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `email` varchar(20) NOT NULL,
-  `firstname` varchar(20) NOT NULL,
-  `middlename` varchar(20) NOT NULL,
-  `lastname` varchar(20) NOT NULL,
-  `contact_number` varchar(20) NOT NULL,
-  `birthdate` date DEFAULT NULL,
-  `user_level` int(11) NOT NULL,
+  `username` varchar(20)  NULL,
+  `password` varchar(32)  NULL,
+  `email` varchar(75)  NULL,
+  `firstname` varchar(20)  NULL,
+  `middlename` varchar(20)  NULL,
+  `lastname` varchar(20)  NULL,
+  `contact_number` varchar(20)  NULL,
+  `birthdate` date NOT NULL, 
+  `user_level` int(11)  NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`user_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
