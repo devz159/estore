@@ -10,7 +10,7 @@
  * @author		Kenneth "digiArtist_ph" P. Vallejos
  * @link		http://n2esolutions.org
  * @since		Mid 2011
- * @version		2.4.6
+ * @version		2.5.6
  *
  *
  * 
@@ -264,9 +264,8 @@ class Mdldata extends CI_Model {
 		
 		return FALSE; */
 		
-		if(!$this->db->query($strQry)) {			
-			throw new Exception("Unable to query records");
-		}
+		if(!$this->db->query($strQry))
+			return FALSE;
 		
  		$this->_mRecords = $this->db->query($strQry)->result();
 		$this->_mRowCount = $this->__getRowCount();		
@@ -299,9 +298,8 @@ class Mdldata extends CI_Model {
 			return TRUE;
 		
 		return FALSE; */
-		if(!$this->db->query($strQry)) {
-			throw new Exception('Something goes wrong');
-		}
+		if(!$this->db->query($strQry))
+			return FALSE;
 		
 		return TRUE;
 		
