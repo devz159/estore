@@ -14,7 +14,7 @@ class Login extends CI_Controller {
 	
 	public function login($param = ''){
 		$data['error'] = $param;
-		$data['main_content'] = "login/login_view";
+		$data['main_content'] = "home/home_view";
 		$this -> load -> view('includes/template', $data);
 	}
 

@@ -1,0 +1,66 @@
+@import "reset.css";
+html, body{
+    width: 100%;
+    height: 100%;
+}
+body{
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.sc{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	display: none;
+	z-index: 10;
+}
+.sc.selected{
+	display: block;
+	z-index: 11;
+}
+/****header***/
+
+.header{
+	position:relative;
+	height: 80px;
+	background: #ffff33;
+	}
+.header_container{
+	width: 1000px;
+	}
+.logo {
+	
+	width: 300px;
+	height: 70px;
+	background: #ffff33 url(../images/logo.png)no-repeat top;
+	outline: 1px yellow solid;
+	}
+	
+.search_bar{
+	float: left;
+	display: inline;
+	}
+.search_bar li{
+	list-style: none;
+	margin: 5px;
+	float:left;
+	}
+.header_sign_in{
+	display: inline;
+	}
+.header_sign_in li{
+	list-style: none;
+	display: inline;
+	}
+	
+/****footer****/
+.footer {
+	height: 50px;
+	width: inherit;
+	position: absolute;
+	bottom: 0px;
+	background: #ffff33;
+	}
