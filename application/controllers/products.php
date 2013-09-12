@@ -12,7 +12,6 @@ public function __construct() {
 
 	public function index(){
 		
-		call_debug('dssd');
 	$data['main_content'] = "products/create_view";
 	$this->load->view('includes/template', $data);
 	}
@@ -61,7 +60,6 @@ public function __construct() {
 }
 	
 	
-	
 	 public function edit($param = ''){  
 		
 	$this->load->library('form_validation');
@@ -96,20 +94,24 @@ public function __construct() {
 						$this->mdldata->update($params);
 						$data['main_content'] = 'products/success_view';
 						$this->load->view('includes/template', $data);		
-		
+		}
 	}
 
-	}
-
-	 public function delete($param = ''){  
+	 public function delete($param = ''){
+	 		
+		$this->load->model('mdldata');
 		
-	$this->load->library('form_validation');
-	$this->load->model('mdldata');
-	
+				$params = array ( 'table' => array ('name' => 'product'),
+									'fields' => array ( 'status' => 0 )
+								);
+			 		$this->mdldata->update($params);
+					$data['main_content'] = 'products/success_view';
+					$this->load->view('include/template');
+				}
 
 
 
 
 
-	 }
-}
+
+} 
