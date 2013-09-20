@@ -9,6 +9,5 @@
      <p><label>Middlename</label><input type="text" name="middlename" /><span><?php echo form_error('middlename'); ?></span></p></p>
      <p><label>Lastname</label><input type="text" name="lastname" /><span><?php echo form_error('lastname'); ?></span></p></p>
      <p><label>Contact Number</label><input type="text" name="contact_number" /><span><?php echo form_error('contact_number'); ?></span></p></p>
-	 <p><label>Birthdate</label><input class="birthdate" type="text" name="birthdate"/><span><?php echo form_error('birthdate'); ?></span></p></p>
 	
 	<p><input type="submit" value="Submit" /></p>

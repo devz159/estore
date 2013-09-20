@@ -1,4 +1,5 @@
 -- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 4.0.4
 -- http://www.phpmyadmin.net
 --
@@ -90,13 +91,12 @@ CREATE TABLE IF NOT EXISTS `payment_confirmation` (
 
 CREATE TABLE IF NOT EXISTS `product` (
   `product_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `product_name` varchar(20) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `selling_price` int(11) NOT NULL,
-  `discounted_price` int(11) NOT NULL,
+  `product_name` varchar(20) NOT NULL UNIQUE,
+  `product_date` DATE DEFAULT NULL,
   `color` varchar(20) NOT NULL,
   `size` int(11) NOT NULL,
   `description` varchar(50) NOT NULL,
+  `user_ID` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`product_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -133,16 +133,21 @@ CREATE TABLE IF NOT EXISTS `return_details` (
 --
 
 CREATE TABLE IF NOT EXISTS `stock_receiving` (
+  
   `stock_receiving_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `product_ID` int(11) NOT NULL,
   `received_date` DATE DEFAULT NULL,
   `user_ID` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `unit_price` int (11) NOT NULL,
+  `discounted_price` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`stock_receiving_ID`),
-  KEY `fgn_user_ID` (`user_ID`)
+  KEY `fgn_product_ID` (`product_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
-
+/*
 --
 -- Table structure for table `stock_receiving_details`
 --
@@ -153,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `stock_receiving_details` (
   `quantity` int(11) NOT NULL,
   KEY `fgn_product_ID` (`product_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -162,16 +167,15 @@ CREATE TABLE IF NOT EXISTS `stock_receiving_details` (
 
 CREATE TABLE IF NOT EXISTS `user` (
   `user_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(20)  NULL,
-  `password` varchar(32)  NULL,
-  `email` varchar(75)  NULL,
-  `firstname` varchar(20)  NULL,
-  `middlename` varchar(20)  NULL,
-  `lastname` varchar(20)  NULL,
-  `contact_number` varchar(20)  NULL,
-  `birthdate` date NOT NULL, 
-  `user_level` int(11)  NULL,
-  `status` int(11) DEFAULT NULL,
+  `username` varchar(20) NOT NULL UNIQUE,
+  `password` varchar(32) NOT NULL,
+  `email` varchar(75) NOT NULL,
+  `firstname` varchar(20) NOT NULL,
+  `middlename` varchar(20) NOT NULL,
+  `lastname` varchar(20) NOT NULL,
+  `contact_number` varchar(20) NOT NULL, 
+  `user_level` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
   PRIMARY KEY (`user_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -212,9 +216,14 @@ ALTER TABLE `stock_receiving`
 --
 -- Constraints for table `stock_receiving_details`
 --
+/*
 ALTER TABLE `stock_receiving_details`
   ADD CONSTRAINT `stock_receiving_details_ibfk_1` FOREIGN KEY (`product_ID`) REFERENCES `product` (`product_ID`);
-
+*/
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+INSERT INTO `estore`.`user` (`user_ID`, `username`, `password`, `email`, `firstname`, `middlename`, `lastname`, `contact_number`, `user_level`, `status`) VALUES (NULL, 'admin', MD5('admin'), 'admin@admin.com', 'admin', 'admin', 'admin', '1234', '1', '1');
+
+INSERT INTO `estore`.`user` (`user_ID`, `username`, `password`, `email`, `firstname`, `middlename`, `lastname`, `contact_number`, `user_level`, `status`) VALUES (NULL, 'user', MD5('user'), 'user@user.com', 'user', 'user', 'user', '12345', '0', '1');

@@ -1,3 +1,4 @@
+user_user_id:USER_USER_ID
 user_username:USER_USERNAME
 user_islog:USER_ISLOG
 user_fullname:USER_FULLNAME
