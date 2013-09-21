@@ -67,8 +67,11 @@ class Product extends CI_Controller {
 	private function _editproduct($id, $param =''){
 		$this->load->model('mdldata');
 		$params['querystring'] = "SELECT * FROM product WHERE product_ID={$id}";
+	//	$params['querystring2'] = "SELECT * FROM stock_receiving WHERE product_ID=($id)";
+		
 		$this->mdldata->select($params);
 		$data['products'] = $this->mdldata->_mRecords;
+		
 		
 		$data['error'] = $param;
 		$data['main_content'] = 'product/editproduct_view';
@@ -81,11 +84,12 @@ class Product extends CI_Controller {
 		
 		$params = array ('table' => array('name' => 'product', 'criteria_phrase' => 'product_ID= "' .$this->input->post('product_ID') . '"'),
 						'fields' => array('status' => 0));
-			
+						
+						call_debug($params);
 						if ($this->mdldata->update($params)){
-							 echo "1";
+								redirect(base_url() . 'product');
 						}else{
-							echo "0";
+							echo "there was an error updating database";
 						}	
 		
 			
@@ -141,7 +145,7 @@ class Product extends CI_Controller {
 
 		$this->form_validation->set_rules('product_name', 'Product Name', 'required');
 		$this->form_validation->set_rules('color', 'Color', 'required');
-		$this->form_validation->set_rules('size', 'Size', 'required');
+		$this->form_validation->set_rules('category', 'Category', 'required');
 		$this->form_validation->set_rules('description', 'Description', 'required');
 		
 		//product_date, user_ID, status ==1
@@ -159,7 +163,7 @@ class Product extends CI_Controller {
 							'fields' => array(
 												'product_name' => $this->input->post('product_name'),
 												'color' => $this->input->post('color'),
-												'size' => $this->input->post('size'),
+												'category' => $this->input->post('category'),
 												'description' => $this->input->post('description'),
 												'product_date' => date("Y-m-d"),
 												'user_ID' => $arr['user_user_id'],
@@ -184,7 +188,7 @@ class Product extends CI_Controller {
 		
 		$this->form_validation->set_rules('product_name', 'Product Name', 'required');
 		$this->form_validation->set_rules('color', 'Color', 'required');
-		$this->form_validation->set_rules('size', 'Size', 'required');
+		$this->form_validation->set_rules('category', 'Category', 'required');
 		$this->form_validation->set_rules('description', 'Description', 'required');
 		
 	
@@ -199,7 +203,7 @@ class Product extends CI_Controller {
 						'fields' => array(						                                     
 									'product_name' 	=> $this->input->post('product_name'),
 									'color' => $this->input->post('color'),
-									'size' 	=> $this->input->post('size'),		
+									'category' 	=> $this->input->post('category'),		
 									'description' => $this->input->post('description')));	
 		
 					//$this->mdldata->reset();
@@ -213,6 +217,34 @@ class Product extends CI_Controller {
 				
 			}	
 	
+	}
+
+	public function do_upload() {
+		
+		$this->load->helper(array('form', 'url'));
+		$this->load->view('upload_form', array('error' => ' ' ));
+		
+		$config['upload_path'] = '.estore/images/uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '100';
+		$config['max_width']  = '1024';
+		$config['max_height']  = '768';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$error = array('error' => $this->upload->display_errors());
+
+			$this->load->view('upload_form', $error);
+		}
+		else
+		{
+			$data = array('upload_data' => $this->upload->data());
+
+			redirect(base_url() . 'product');
+		}
+		
 	}
 	
 

@@ -6,6 +6,8 @@
 		<thead>
 			<th>PRODUCT NAME</th>
 			<th>PRODUCT DATE</th>
+			<th>CATEGORY</th>
+			<th>COLOR</th>
 			<th>ACTION</th>
 		</thead>
 		<tbody>
@@ -15,6 +17,8 @@
 					<tr productid="<?php echo $product->product_ID; ?>">
 						<td><?php echo $product->product_name; ?></td>
 						<td><?php echo $product->product_date; ?></td>
+						<td><?php echo $product->category; ?></td>
+						<td><?php echo $product->color; ?> </td>
 						<td><a href="<?php echo base_url() .  'product/section/addquantity/' . $product->product_ID; ?>">ADD QUANTITY</a> | <a href="<?php echo base_url() .  'product/section/editproduct/' . $product->product_ID; ?>">EDIT</a> | <a class="delete dltproduct"  href="<?php echo base_url() .  'product/section/deleteproduct/' . $product->product_ID; ?>">DELETE</a></td>
 					</tr>
 				<?php endforeach ?>

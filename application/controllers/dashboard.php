@@ -8,7 +8,7 @@ class Dashboard extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		
-		authUser(array('section' => 'log', 'sessvar' => array('user_username', 'user_fullname', 'user_user_level', 'user_islog')));
+		authUser(array('section' => 'log', 'sessvar' => array('user_user_id','user_username', 'user_fullname', 'user_user_level', 'user_islog')));
 				
 	}
 	
@@ -44,7 +44,7 @@ class Dashboard extends CI_Controller {
 	
 	private function getSessionVar() {
 		// getInfo();
- 		$params = array('user_username', 'user_fullname', 'user_user_level');
+ 		$params = array('user_user_id','user_username', 'user_fullname', 'user_user_level','user_islog');
  		$this->sessionbrowser->getInfo($params); // returns TRUE if successful, otherwise FALSE
 
  		// DATA:

@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `product_name` varchar(20) NOT NULL UNIQUE,
   `product_date` DATE DEFAULT NULL,
   `color` varchar(20) NOT NULL,
-  `size` int(11) NOT NULL,
+  `category` varchar(20) NOT NULL,
   `description` varchar(50) NOT NULL,
   `user_ID` int(11) NOT NULL,
   `status` int(11) NOT NULL,
