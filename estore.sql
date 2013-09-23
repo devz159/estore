@@ -46,10 +46,31 @@ CREATE TABLE IF NOT EXISTS `order` (
 --
 
 CREATE TABLE IF NOT EXISTS `order_details` (
+  `order_ID` int(11) NOT NULL  AUTO_INCREMENT,
   `product_ID` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   KEY `fgn_product_ID` (`product_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- -------------------------------------------------------
+
+--
+-- Table structure for `product_price`
+--
+
+CREATE TABLE IF NOT EXISTS `product_price` (
+	`price_ID` int(11) NOT NULL  AUTO_INCREMENT,
+	`product_ID` int(11) NOT NULL, 
+	`start_date` DATE DEFAULT NULL,
+	`end_date` DATE DEFAULT NULL,
+	`price` int(11) NOT NULL, 
+	`quantity` int(11) NOT NULL,
+	KEY `fgn_product_ID` (`product_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
 
 -- --------------------------------------------------------
 
@@ -138,9 +159,6 @@ CREATE TABLE IF NOT EXISTS `stock_receiving` (
   `product_ID` int(11) NOT NULL,
   `received_date` DATE DEFAULT NULL,
   `user_ID` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `unit_price` int (11) NOT NULL,
-  `discounted_price` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`stock_receiving_ID`),
   KEY `fgn_product_ID` (`product_ID`)
@@ -212,6 +230,9 @@ ALTER TABLE `return_details`
 --
 ALTER TABLE `stock_receiving`
   ADD CONSTRAINT `stock_receiving_ibfk_1` FOREIGN KEY (`user_ID`) REFERENCES `user` (`user_ID`);
+  
+ALTER TABLE `product_price`
+  ADD CONSTRAINT `product_price_ibfk_1` FOREIGN KEY (`product_ID`) REFERENCES `user` (`product_ID`); 
 
 --
 -- Constraints for table `stock_receiving_details`

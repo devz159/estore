@@ -13,4 +13,20 @@ class Home extends CI_Controller {
 		$this -> load -> view('includes/template_login', $data);
 	}
 	
+	public function about_us() {
+		
+		
+	}
+	
+	public function contact_us(){
+		
+		
+	}
+	
+	public function faq(){
+		
+		
+	}
+
+
 }
