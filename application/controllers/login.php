@@ -4,19 +4,24 @@ class Login extends CI_Controller {
 
 
 	public function __construct() {
-	parent::__construct();
+		parent::__construct();
 		
-	// getInfo();
- 			$params = array('user_islog');
- 			$this->sessionbrowser->getInfo($params); // returns TRUE if successful, otherwise FALSE
-}
+		// getInfo();
+ 		$params = array('user_islog');
+ 		$this->sessionbrowser->getInfo($params); // returns TRUE if successful, otherwise FALSE
+	}
 	
-public function index() {
+	public function index() {
 	
+		$this->_login();
+		
+	}
 	
+	private function _login($param = ''){
+		
+		$data['error'] = $param;
 		$data['main_content'] = "login/login_view";
 		$this -> load -> view('includes/template', $data);
-		//$data['main_content'] = "login/login_view";
 	}
 	
 	public function validatelogin(){
@@ -56,7 +61,7 @@ public function index() {
 			
 		else:
 			// error
-			echo "Username and password do not match.";
+			$this->_login("Username and password do not match.");
 		endif;
 	}
 	

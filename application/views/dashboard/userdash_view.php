@@ -1,10 +1,21 @@
 <div>
-	<h1>congratulations!</h1>
+	<h3>Products</h3>
+	<table>
+		
+		<thead>
+			<tr>
+				<th></th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr>
+				<td></td>
+			</tr>
+		</tbody>
+		
+	</table>
 	
- 	<p> user dashboard</p>
-
-<a href="<?php echo base_url ('login/logout');?>"> Signout </a>
-
 </div>
 
 

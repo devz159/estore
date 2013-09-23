@@ -8,6 +8,7 @@
 			<th>PRODUCT DATE</th>
 			<th>CATEGORY</th>
 			<th>COLOR</th>
+			<th>QUANTITY</th>
 			<th>ACTION</th>
 		</thead>
 		<tbody>
