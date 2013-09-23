@@ -1,15 +1,16 @@
-<?php
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+class Home extends CI_Controller {
 
 
-	class Home extends CI_Controller{
-		
-		public function __construct() {
+	public function __construct() {
 		parent::__construct();
-		}
-		
-		
-		public function index() {
-			
-		$this->load->view('home/home_view');		
-		}
+
 	}
+	
+	public function index(){
+		$data['main_content'] = "home/home_view";
+		$this -> load -> view('includes/template_login', $data);
+	}
+	
+}

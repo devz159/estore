@@ -1,4 +1,3 @@
-
 <div class ="header">
 	
 	<div class = "header_container">
@@ -12,7 +11,9 @@
         
         <div class = "">
             <ul class="header_sign_in">
-		     	<li><a href ="<?php echo base_url() . 'login/logout';?>">Logout</a></li>
+		   	 <li><a href ="#">Cart</a></li>
+	         <li><a href="<?php echo base_url ('login');?>"> Login </a></li>
+		     <li class="sign_up" ><a href ="<?php echo base_url ('login/validateregister');?>"> Registration</a></li>
 	   		</ul>
         </div>
         
@@ -31,4 +32,3 @@
      </div>  
 
 </div>
-

@@ -21,7 +21,7 @@ class Login extends CI_Controller {
 		
 		$data['error'] = $param;
 		$data['main_content'] = "login/login_view";
-		$this -> load -> view('includes/template', $data);
+		$this -> load -> view('includes/template_login', $data);
 	}
 	
 	public function validatelogin(){
