@@ -1,25 +1,27 @@
 <div class ="header">
 	
-	<div class = "header_container">
+	
 		
     	<div class = "logo"></div>
 
         <div class = "search_bar">
-        	<a><label>Search</label><input type="text" name="search"/></a>
-            <a><input type="submit" value="submit" /></a>
+        	<div class = "light">
+        	<a><input type="text" name="search" class = "search round"/></a>
+            <a><input type="submit" value="Go" class = "search square" /></a>
+        	</div>
         </div>
         
-        <div class = "">
-            <ul class="header_sign_in">
+        <div class="header_sign_in">
+            <ul >
 		   	 <li><a href ="#">Cart</a></li>
 	         <li><a href="<?php echo base_url ('login');?>"> Login </a></li>
-		     <li class="sign_up" ><a href ="<?php echo base_url ('login/validateregister');?>"> Registration</a></li>
+		     <li class="sign_up" ><a href ="<?php echo base_url ('login/validateregister');?>">Sign Up!</a></li>
 	   		</ul>
         </div>
         
-     </div>
+
      
-     <div class = "menu_bar">
+     <!--<div class = "menu_bar">
      
      	<div class = "menu_bar_cont">
         
@@ -29,6 +31,6 @@
                 <li><a href = "#">About Us</a></li>
             </ul>
         </div>
-     </div>  
+     </div>  -->
 
 </div>
