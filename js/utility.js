@@ -10,7 +10,7 @@ $(document).ready(function() {
 						buttons : {
 							"Delete" : function() {
 								
-								$.post(base_url + "product/deleteproduct", {'product_ID': currtr.parent().parent().attr('productid')})
+								$.post(base_url + "admin/product/deleteproduct", {'product_ID': currtr.parent().parent().attr('productid')})
 								.success(function(data) {
 									if(data == 1){
 										currtr.closest('tr').remove('tr');

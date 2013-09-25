@@ -16,8 +16,8 @@ class Users extends CI_Controller {
 	
 	public function section(){
 	
-		$section = ($this->uri->segment(3)) ? $this->uri->segment(3) : '';
-		$id = ($this->uri->segment(4)) ? $this->uri->segment(4) : '';
+		$section = ($this->uri->segment(4)) ? $this->uri->segment(4) : '';
+		$id = ($this->uri->segment(5)) ? $this->uri->segment(5) : '';
 		
 		switch($section){
 			

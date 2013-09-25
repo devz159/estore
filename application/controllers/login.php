@@ -50,11 +50,11 @@ class Login extends CI_Controller {
 			
 			if($userlevel == 1) {
 				$this->setSessionVar($userid,$username, $userfullname, $userlevel);
-				redirect('dashboard/admin_dash');
+				redirect(base_url() . 'admin/dashboard');
 				
 			} else {
 				$this->setSessionVar($userid,$username, $userfullname, $userlevel);
-				redirect('dashboard/user_dash');
+				redirect(base_url() . 'customer/dashboard');
 			}
 			
 			// redirects to dashboard.
