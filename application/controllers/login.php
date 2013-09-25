@@ -54,7 +54,7 @@ class Login extends CI_Controller {
 				
 			} else {
 				$this->setSessionVar($userid,$username, $userfullname, $userlevel);
-				redirect(base_url() . 'customer/dashboard');
+				redirect(base_url() . 'customer/product');
 			}
 			
 			// redirects to dashboard.

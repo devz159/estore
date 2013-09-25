@@ -14,28 +14,22 @@ class Dashboard extends CI_Controller {
 	}
 	
 	public function section(){
-		call_debug('dsd');
+		
 		$section = ($this->uri->segment(4)) ? $this->uri->segment(4) : '';
 		$id = ($this->uri->segment(5)) ? $this->uri->segment(5) : '';
 	
 		switch($section){
 				
-			case 'addquantity':
-				$this->_addquantity($id);
-				break;
-			case 'addproduct':
-				$this->_addproduct();
-				break;
-			case 'viewproduct':
-				$this->_viewproduct();
-				break;
-			case 'editproduct':
-				$this->_editproduct($id);
+			case 'home':
+				$this->_view();
 				break;
 			default:
-				$this->_viewproduct();
+				$this->_view();
 		}
 	}
 	
-	
+	private function _view(){
+		$data['main_content'] = 'customer/dashboard/home';
+		$this->load->view('includes/template', $data);
+	}
 }
