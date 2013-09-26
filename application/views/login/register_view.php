@@ -1,4 +1,4 @@
-<div>
+<div class = "content register">
 	<p class="error"><?php if(!empty($error)){echo $error;}?></p>
     <?php echo form_open(base_url() . 'login/validateregister');?>
      
@@ -11,3 +11,4 @@
      <p><label>Contact Number</label><input type="text" name="contact_number" /><span><?php echo form_error('contact_number'); ?></span></p></p>
 	
 	<p><input type="submit" value="Submit" /></p>
+</div>

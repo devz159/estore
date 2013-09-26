@@ -5,10 +5,8 @@
     	<div class = "logo"></div>
 
         <div class = "search_bar">
-        	<div class = "light">
-        	<a><input type="text" name="search" class = "search round"/></a>
-            <a><input type="submit" value="Go" class = "search square" /></a>
-        	</div>
+        	<a><input type="text" name="search" class = "search square"/>
+            <input type="submit" value="Go"/></a>
         </div>
         
         <div class="header_sign_in">
