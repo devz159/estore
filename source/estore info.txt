@@ -1,0 +1,7 @@
+name = estore
+
+username = root
+password = 
+
+session key = solar  
+
