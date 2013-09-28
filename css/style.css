@@ -42,10 +42,10 @@ html, body {
 	}
 
 .header_sign_in {
-    left: 960px;
+    left: 890px;
     position: absolute;
     top: 10px;
-    width: 300px;
+    width: 450px;
 }
 input[type=text]{
 	color: #bcbcbc;
@@ -119,11 +119,11 @@ input[type=submit], input [type=button]:hover {
     clear: both;
     margin: auto;
     min-height: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 100px;
     position: inherit;
     margin-top: 35px;
     width: 950px;
-	
+	outline: 1px solid blue;
 }
 
 .column {
@@ -178,12 +178,6 @@ input[type=submit], input [type=button]:hover {
 	border-radius: 10px 10px 10px 10px;
 	}
 
-.main{
-	width:960px;
-	margin: auto;
-	outline: 1px yellow solid;
-	
-	}
 .slider{
 	width: 960px;
 	padding-top: 5px;
@@ -206,21 +200,25 @@ input[type=submit], input [type=button]:hover {
 .login_form p {
 	padding: 10px;
 	}
-	
+
+.main{
+	height: 100%;
+	}
 .product {
-	width: 230px;
-	min-height: 280px;
+	width: 210px;
+	min-height: 400px;
 	outline: 1px solid #CCC;
-	margin: 2px;
-	padding: 5px;
+	margin: 5px;
+	padding: 6px;
 	float: left;
 	}
 .divide {
-	
+	bottom-top: 50px;
+	margin: 10px;
 	}
 
-.divide h2 {
-	padding-top: 10px;
+.divide h2{
+	padding: 10px;
 	font-size:20px;
 	font-weight: bold;
 	color:  #999933;
@@ -238,7 +236,8 @@ input[type=submit], input [type=button]:hover {
 	color: #000;
 	}
 .image {
-	
+	width:210px;
+	height: 150px;
 	margin: auto;
 	}
 /*****footer**/

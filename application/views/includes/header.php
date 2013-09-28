@@ -7,7 +7,7 @@
 
          <div class = "search_bar">
         	<a><input type="text" name="search" class = "search square"/>
-            <input type="submit" value="Go" class = "search button"/></a>
+            <input type="submit" value="Go"/></a>
         </div>
         <div class="header_sign_in">
             <ul >

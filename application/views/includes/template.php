@@ -13,10 +13,13 @@
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script type="text/javascript" src="<?php echo base_url() . 'js/utility.js';?>"></script>
-    <script type="text/javascript" src="<?php echo base_url() . 'js/engine1/wowslider.js';?>"></script>
-	<script type="text/javascript" src="<?php echo base_url() . 'js/engine1/script.js';?>"></script>
 
     
+    <link rel="stylesheet" href="flexslider.css" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="jquery.flexslider.js"></script>
+  
+
 </head>
 <body>
 	

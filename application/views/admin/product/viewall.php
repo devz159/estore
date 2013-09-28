@@ -1,4 +1,4 @@
-<div>
+<div >
 	<h3>Product Details</h3>
 	<p><a href="<?php echo base_url ('admin/product/section/add');?>">  ADD PRODUCT </a></p>
 	
