@@ -10,6 +10,7 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
+	
 }
 
 .header {
@@ -118,10 +119,11 @@ input[type=submit], input [type=button]:hover {
     clear: both;
     margin: auto;
     min-height: 100%;
-    padding-bottom: 75px;
-    position: relative;
-    top: 35px;
+    margin-bottom: 10px;
+    position: inherit;
+    margin-top: 35px;
     width: 950px;
+	
 }
 
 .column {
@@ -177,14 +179,17 @@ input[type=submit], input [type=button]:hover {
 	}
 
 .main{
-	float:right;
 	width:960px;
-	min-height: 500px;
+	margin: auto;
+	outline: 1px yellow solid;
+	
 	}
 .slider{
 	width: 960px;
-	
+	padding-top: 5px;
+	margin-left: -10px;
 	height: 100%;
+	outline: 1px blue dashed;
 	}
 .login {
 	width: 100%;
@@ -201,12 +206,48 @@ input[type=submit], input [type=button]:hover {
 .login_form p {
 	padding: 10px;
 	}
+	
+.product {
+	width: 230px;
+	min-height: 280px;
+	outline: 1px solid #CCC;
+	margin: 2px;
+	padding: 5px;
+	float: left;
+	}
+.divide {
+	
+	}
+
+.divide h2 {
+	padding-top: 10px;
+	font-size:20px;
+	font-weight: bold;
+	color:  #999933;
+	}
+.product .title {
+	text-align: center;
+	font-weight: bold;
+	color: #999933;
+	}
+.product .description {
+	padding: 5px;
+	margin-top: -10px;
+	font-size: 10px;
+	text-align: justify;
+	color: #000;
+	}
+.image {
+	
+	margin: auto;
+	}
 /*****footer**/
 .footer {
 	clear: both;
     background: none repeat scroll 0 0 #CCCC33;
     bottom: 0;
+	margin-top: 10px;
     height: 50px;
-    position: relative;
+    position: inherit;
     width: 100%;
 }
