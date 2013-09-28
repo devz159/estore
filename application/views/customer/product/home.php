@@ -1,7 +1,5 @@
 <div class="content">
-	<div class = "side column">
-     
-    </div>
+	<div class = "side column"></div>
     <div class = "main column">
     	<div class="flexslider">
               <ul class="slides">
@@ -16,7 +14,7 @@
                 </li>
               </ul>
 		</div>
-                <div class = "divide">
+        <div class = "divide">
              <h2>Racini Bags</h2>
                         <div class = "product">
                         <img class = "image" src="<?php echo base_url() . 'images/racini thumbs/1.jpg'?>" alt="bag"/>

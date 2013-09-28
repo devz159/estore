@@ -123,12 +123,10 @@ input[type=submit], input [type=button]:hover {
     position: inherit;
     margin-top: 35px;
     width: 950px;
-	outline: 1px solid blue;
+	border: 1px solid #CCC;
+	
 }
 
-.column {
-	outline: 1px solid #CCC;
-	}
 .side{
 	outline: none;
 	width: 260px;
@@ -186,22 +184,52 @@ input[type=submit], input [type=button]:hover {
 	outline: 1px blue dashed;
 	}
 .login {
+	
 	width: 100%;
 	min-height: 500px;
 	}
 .login_form {
-	width: 400px;
+	
+	width: 550px;
 	margin: auto;
 	padding: 20px;
-	background: grey;
+	/**background: grey;
 	border: 1px solid #999;
-	border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;**/
 	}
 .login_form p {
 	padding: 10px;
+	
 	}
-
-.main{
+.login_form {
+   width: 600px;
+   display:inline;
+   
+}
+.login_form a {
+	margin:0 auto;
+	}
+.form {
+	position: absolute;
+	left: 550px;
+	padding: 5px;
+	margin: 3px;
+	width: 350px; 
+	}
+.login_form p label {
+	position: absolute;
+	left: 350px;
+	color: grey;
+	font-weight: bold;
+	font-size: 15px;
+	}
+.login_form p{
+	padding: 10px;
+	}
+.submit input[type = submit]{
+	color:blue;
+	}
+.main {
 	height: 100%;
 	}
 .product {
@@ -215,6 +243,7 @@ input[type=submit], input [type=button]:hover {
 .divide {
 	bottom-top: 50px;
 	margin: 10px;
+
 	}
 
 .divide h2{
@@ -222,6 +251,7 @@ input[type=submit], input [type=button]:hover {
 	font-size:20px;
 	font-weight: bold;
 	color:  #999933;
+	border-bottom: 2px solid grey;
 	}
 .product .title {
 	text-align: center;
@@ -250,3 +280,22 @@ input[type=submit], input [type=button]:hover {
     position: inherit;
     width: 100%;
 }
+
+.aboutus h2{
+	
+	color:  #CCCC33;
+	font-size: 24px;
+	font-weight: bold;
+	text-align: left;
+	text-transform: uppercase;
+	}
+.aboutus{
+	line-height: 1em;
+	margin-top: 50px;
+	text-align:justify;
+	padding: 30px;
+	}
+
+.aboutus p {
+	margin-top: 10px;
+	}
