@@ -6,7 +6,8 @@ class Product extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		authUser(array('section' => 'log', 'sessvar' => array('user_user_id','user_username', 'user_fullname', 'user_user_level', 'user_islog')));
-
+			
+		$this->load->library('cart');
 		
 	}
 	
@@ -25,7 +26,7 @@ class Product extends CI_Controller {
 				$this->_view();
 				break;
 			default:
-				$this->_viewproduct();
+				$this->_view();
 		}
 	}
 

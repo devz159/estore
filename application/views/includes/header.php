@@ -11,7 +11,7 @@
         </div>
         <div class="header_sign_in">
             <ul >
-            	<li><a href ="#">Cart</a></li>
+            	<li><a href ="#">Shopping Cart(<?php echo $this->cart->total();?>)</a></li>
 	         	<li><a href="<?php echo base_url ('login');?>"> Login </a></li>
 		     	<li><a href ="<?php echo base_url() . 'login/logout';?>">Logout</a></li>
 	   		</ul>
