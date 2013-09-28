@@ -20,16 +20,34 @@ class Dashboard extends CI_Controller {
 	
 		switch($section){
 				
-			case 'home':
-				$this->_view();
+			case 'faq':
+				$this->_faq();
+				break;
+			case 'contacts':
+				$this->_contacts();
+				break;
+			case 'about_us':
+				$this->_aboutUs();
 				break;
 			default:
-				$this->_view();
+				$this->_faq();
 		}
 	}
 	
-	private function _view(){
-		$data['main_content'] = 'customer/dashboard/home';
+	private function _faq(){
+		$data['main_content'] = 'customer/pages/faq';
 		$this->load->view('includes/template', $data);
 	}
+	
+	private function _aboutUs(){
+		$data['main_content'] = 'customer/pages/about_us';
+		$this->load->view('includes/template', $data);
+	}
+	
+	private function _contacts(){
+		$data['main_content'] = 'customer/pages/contacts';
+		$this->load->view('includes/template', $data);
+	}
+	
+
 }
