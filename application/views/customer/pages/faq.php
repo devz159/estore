@@ -1,4 +1,6 @@
 <div class="content">
-	<h3>faq</h3>
+	<div class = "ACF">
+	<h2>faq</h2>
+    </div>
 </div>
 

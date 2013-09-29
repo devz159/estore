@@ -226,9 +226,6 @@ input[type=submit], input [type=button]:hover {
 .login_form p{
 	padding: 10px;
 	}
-.submit input[type = submit]{
-	color:blue;
-	}
 .main {
 	height: 100%;
 	}
@@ -270,6 +267,10 @@ input[type=submit], input [type=button]:hover {
 	height: 150px;
 	margin: auto;
 	}
+span{
+	
+	outline: 1px solid grey;
+	}
 /*****footer**/
 .footer {
 	clear: both;
@@ -281,7 +282,7 @@ input[type=submit], input [type=button]:hover {
     width: 100%;
 }
 
-.aboutus h2{
+.ACF h2{
 	
 	color:  #CCCC33;
 	font-size: 24px;
@@ -289,13 +290,27 @@ input[type=submit], input [type=button]:hover {
 	text-align: left;
 	text-transform: uppercase;
 	}
-.aboutus{
+.ACF{
 	line-height: 1em;
-	margin-top: 50px;
+	margin-top: 10px;
 	text-align:justify;
 	padding: 30px;
 	}
 
-.aboutus p {
+.ACF p{
+	font: Arial, Helvetica, sans-serif;
 	margin-top: 10px;
+	}
+.ACF ul{
+	width: 250px;
+	float: left;
+	padding: 10px 50px 10px 70px;
+
+	}
+
+.ACF li{
+	list-style:none;
+	font: Arial, Helvetica, sans-serif;
+	line-height: 1em;
+	font-size: 15px;
 	}

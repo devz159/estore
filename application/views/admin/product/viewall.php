@@ -1,4 +1,5 @@
-<div >
+<div id = "content-outer" >
+<div id = "content">
 	<h3>Product Details</h3>
 	<p><a href="<?php echo base_url ('admin/product/section/add');?>">  ADD PRODUCT </a></p>
 	
@@ -34,4 +35,5 @@
 			<?php endif; ?>
 		</tbody>
 	</table>
+    </div>
 </div>
